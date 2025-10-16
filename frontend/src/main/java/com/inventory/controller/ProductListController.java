@@ -58,6 +58,7 @@ public class ProductListController implements Initializable {
     private ObservableList<Product> allProducts;
     private FilteredList<Product> filteredProducts;
     private SortedList<Product> sortedProducts;
+    private ObservableList<Product> currentPageItems;
     
     private static final int ITEMS_PER_PAGE = 20;
     
@@ -72,8 +73,9 @@ public class ProductListController implements Initializable {
         allProducts = FXCollections.observableArrayList();
         filteredProducts = new FilteredList<>(allProducts);
         sortedProducts = new SortedList<>(filteredProducts);
+        currentPageItems = FXCollections.observableArrayList();
         
-        productTable.setItems(sortedProducts);
+        productTable.setItems(currentPageItems);
         sortedProducts.comparatorProperty().bind(productTable.comparatorProperty());
         
         logger.debug("ProductListController initialized");
@@ -227,24 +229,26 @@ public class ProductListController implements Initializable {
     private void setupPagination() {
         pagination.setPageCount(1);
         pagination.setCurrentPageIndex(0);
-        pagination.setPageFactory(this::createPage);
+        pagination.currentPageIndexProperty().addListener((obs, oldIndex, newIndex) -> {
+            updatePageItems(newIndex.intValue());
+        });
     }
     
     /**
-     * Create page for pagination
+     * Update page items based on current page index
      * @param pageIndex Page index
-     * @return Page content
      */
-    private javafx.scene.Node createPage(int pageIndex) {
+    private void updatePageItems(int pageIndex) {
         int fromIndex = pageIndex * ITEMS_PER_PAGE;
         int toIndex = Math.min(fromIndex + ITEMS_PER_PAGE, sortedProducts.size());
         
-        ObservableList<Product> pageItems = FXCollections.observableArrayList(
-            sortedProducts.subList(fromIndex, toIndex)
-        );
+        if (fromIndex < sortedProducts.size()) {
+            currentPageItems.setAll(sortedProducts.subList(fromIndex, toIndex));
+        } else {
+            currentPageItems.clear();
+        }
         
-        productTable.setItems(pageItems);
-        return productTable;
+        logger.debug("Updated page {} with {} items", pageIndex, currentPageItems.size());
     }
     
     /**
@@ -295,12 +299,17 @@ public class ProductListController implements Initializable {
      * Update pagination based on filtered results
      */
     private void updatePagination() {
-        int totalItems = filteredProducts.size();
+        int totalItems = sortedProducts.size();
         int pageCount = (int) Math.ceil((double) totalItems / ITEMS_PER_PAGE);
         pagination.setPageCount(Math.max(1, pageCount));
         
-        if (pagination.getCurrentPageIndex() >= pageCount) {
-            pagination.setCurrentPageIndex(Math.max(0, pageCount - 1));
+        // Reset to first page if current page is out of bounds
+        int currentPage = pagination.getCurrentPageIndex();
+        if (currentPage >= pageCount && pageCount > 0) {
+            pagination.setCurrentPageIndex(0);
+        } else {
+            // Manually update items if staying on same page
+            updatePageItems(currentPage);
         }
     }
     

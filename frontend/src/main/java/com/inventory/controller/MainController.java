@@ -40,6 +40,7 @@ public class MainController implements Initializable {
     @FXML private Button dashboardButton;
     @FXML private Button productsButton;
     @FXML private Button addProductButton;
+    @FXML private Button documentsButton;
     @FXML private Button settingsButton;
     @FXML private Label statusLabel;
     @FXML private ProgressIndicator loadingIndicator;
@@ -93,6 +94,7 @@ public class MainController implements Initializable {
         dashboardButton.setOnAction(e -> showDashboard());
         productsButton.setOnAction(e -> showProducts());
         addProductButton.setOnAction(e -> showAddProduct());
+        documentsButton.setOnAction(e -> showDocuments());
         settingsButton.setOnAction(e -> showSettings());
     }
     
@@ -200,6 +202,28 @@ public class MainController implements Initializable {
         } catch (Exception e) {
             logger.error("Error showing add product form", e);
             AlertUtil.showError("Form Error", e);
+        }
+    }
+    
+    /**
+     * Show documents view
+     */
+    @FXML
+    public void showDocuments() {
+        try {
+            logger.debug("Showing documents view");
+            updateActiveButton(documentsButton);
+            
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/documents.fxml"));
+            Parent documentsView = loader.load();
+            DocumentsController documentsController = loader.getController();
+            documentsController.setMainController(this);
+            
+            mainBorderPane.setCenter(documentsView);
+            
+        } catch (IOException e) {
+            logger.error("Error loading documents view", e);
+            AlertUtil.showLoadingError("load documents");
         }
     }
     

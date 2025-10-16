@@ -11,12 +11,13 @@ from typing import List, Optional
 import uvicorn
 from fastapi import FastAPI, HTTPException, Depends, Query
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse, StreamingResponse
 from dotenv import load_dotenv
 
 from models import Product, ProductCreate, ProductUpdate, DashboardStats
 from database import DatabaseManager
 from utils import setup_logging
+from pdf_generator import PDFGenerator
 
 # Load environment variables
 load_dotenv()
@@ -395,6 +396,105 @@ async def get_categories(db: DatabaseManager = Depends(get_db)):
     except Exception as e:
         logger.error(f"Error fetching categories: {e}")
         raise HTTPException(status_code=500, detail=f"Failed to fetch categories: {str(e)}")
+
+
+# Document/PDF Generation Endpoints
+
+@app.get("/documents/products/full", tags=["Documents"])
+async def download_full_product_list(db: DatabaseManager = Depends(get_db)):
+    """Download complete product list as PDF"""
+    try:
+        logger.info("Generating full product list PDF")
+        
+        # Get all products
+        query = "SELECT * FROM products ORDER BY name"
+        results = db.execute_query(query)
+        
+        products = []
+        for row in results:
+            product = Product(
+                id=row[0],
+                name=row[1],
+                category=row[2],
+                quantity=row[3],
+                price=float(row[4]),
+                description=row[5],
+                created_at=row[6],
+                updated_at=row[7]
+            )
+            products.append(product)
+        
+        # Generate PDF
+        pdf_generator = PDFGenerator()
+        pdf_bytes = pdf_generator.generate_full_product_list(products)
+        
+        # Return as downloadable file
+        from datetime import datetime
+        filename = f"product_list_{datetime.now().strftime('%Y%m%d_%H%M%S')}.pdf"
+        
+        logger.info(f"Generated full product list PDF with {len(products)} products")
+        
+        return StreamingResponse(
+            iter([pdf_bytes]),
+            media_type="application/pdf",
+            headers={
+                "Content-Disposition": f"attachment; filename={filename}",
+                "Content-Length": str(len(pdf_bytes))
+            }
+        )
+        
+    except Exception as e:
+        logger.error(f"Error generating full product list PDF: {e}")
+        raise HTTPException(status_code=500, detail=f"Failed to generate PDF: {str(e)}")
+
+
+@app.get("/documents/products/low-stock", tags=["Documents"])
+async def download_low_stock_report(db: DatabaseManager = Depends(get_db)):
+    """Download low stock products report as PDF"""
+    try:
+        logger.info("Generating low stock report PDF")
+        
+        # Get all products (filter will be done in PDF generator)
+        query = "SELECT * FROM products ORDER BY quantity ASC, name"
+        results = db.execute_query(query)
+        
+        products = []
+        for row in results:
+            product = Product(
+                id=row[0],
+                name=row[1],
+                category=row[2],
+                quantity=row[3],
+                price=float(row[4]),
+                description=row[5],
+                created_at=row[6],
+                updated_at=row[7]
+            )
+            products.append(product)
+        
+        # Generate PDF
+        pdf_generator = PDFGenerator()
+        pdf_bytes = pdf_generator.generate_low_stock_report(products)
+        
+        # Return as downloadable file
+        from datetime import datetime
+        filename = f"low_stock_report_{datetime.now().strftime('%Y%m%d_%H%M%S')}.pdf"
+        
+        low_stock_count = sum(1 for p in products if p.quantity < 10)
+        logger.info(f"Generated low stock report PDF with {low_stock_count} low stock items")
+        
+        return StreamingResponse(
+            iter([pdf_bytes]),
+            media_type="application/pdf",
+            headers={
+                "Content-Disposition": f"attachment; filename={filename}",
+                "Content-Length": str(len(pdf_bytes))
+            }
+        )
+        
+    except Exception as e:
+        logger.error(f"Error generating low stock report PDF: {e}")
+        raise HTTPException(status_code=500, detail=f"Failed to generate PDF: {str(e)}")
 
 
 if __name__ == "__main__":

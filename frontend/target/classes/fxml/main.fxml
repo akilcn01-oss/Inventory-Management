@@ -32,6 +32,11 @@
                   <Insets bottom="5.0" left="15.0" right="15.0" />
                </VBox.margin>
             </Button>
+            <Button fx:id="documentsButton" mnemonicParsing="false" prefWidth="170.0" styleClass="sidebar-button" text="📄 Documents">
+               <VBox.margin>
+                  <Insets bottom="5.0" left="15.0" right="15.0" />
+               </VBox.margin>
+            </Button>
             <Separator>
                <VBox.margin>
                   <Insets bottom="10.0" left="15.0" right="15.0" top="10.0" />

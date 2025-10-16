@@ -1,6 +1,7 @@
 com\inventory\util\AlertUtil.class
 com\inventory\controller\ProductFormController$3.class
 com\inventory\controller\SettingsController.class
+com\inventory\controller\DocumentsController$1.class
 com\inventory\controller\ProductListController$3.class
 com\inventory\controller\MainController.class
 com\inventory\config\AppConfig.class
@@ -19,7 +20,9 @@ com\inventory\model\Product.class
 com\inventory\controller\SettingsController$1.class
 com\inventory\InventoryApplication.class
 com\inventory\service\ApiService$1.class
+com\inventory\controller\DocumentsController$2.class
 com\inventory\controller\ProductListController$2.class
+com\inventory\controller\DocumentsController.class
 com\inventory\controller\MainController$1.class
 com\inventory\controller\ProductFormController$1.class
 com\inventory\service\ApiService.class

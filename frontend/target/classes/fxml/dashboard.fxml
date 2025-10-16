@@ -73,7 +73,7 @@
             </VBox>
             
             <!-- Low Stock Card -->
-            <VBox alignment="CENTER" styleClass="stats-card warning-card" GridPane.columnIndex="2" onMouseClicked="#handleLowStockAlert">
+            <VBox alignment="CENTER" styleClass="stats-card warning-card" GridPane.columnIndex="2">
                <children>
                   <Label fx:id="lowStockCountLabel" styleClass="stats-number" text="0">
                      <font>
@@ -99,7 +99,7 @@
             <!-- Total Value Card -->
             <VBox alignment="CENTER" styleClass="stats-card success-card" GridPane.columnIndex="3">
                <children>
-                  <Label fx:id="totalValueLabel" styleClass="stats-number" text="$0.00">
+                  <Label fx:id="totalValueLabel" styleClass="stats-number" text="0.00">
                      <font>
                         <Font name="System Bold" size="28.0" />
                      </font>

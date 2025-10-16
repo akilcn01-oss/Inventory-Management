@@ -1,50 +1,56 @@
 /* Modern Inventory Management System Styles */
 
-/* Root Variables */
+/* Root Variables - Vibrant & Colorful Theme */
 .root {
     -fx-font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
     -fx-font-size: 14px;
     
-    /* Color Palette */
-    -fx-primary-color: #2563eb;
-    -fx-primary-dark: #1d4ed8;
-    -fx-secondary-color: #64748b;
-    -fx-success-color: #059669;
-    -fx-warning-color: #d97706;
-    -fx-error-color: #dc2626;
-    -fx-info-color: #0891b2;
+    /* Vibrant Color Palette */
+    -fx-primary-color: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -fx-primary-solid: #667eea;
+    -fx-primary-dark: #5568d3;
+    -fx-secondary-color: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    -fx-success-color: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    -fx-success-solid: #00d4aa;
+    -fx-warning-color: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+    -fx-warning-solid: #ff9800;
+    -fx-error-color: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+    -fx-error-solid: #ff6b6b;
+    -fx-info-color: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+    -fx-info-solid: #17a2b8;
     
     /* Background Colors */
     -fx-background-primary: #ffffff;
-    -fx-background-secondary: #f8fafc;
-    -fx-background-tertiary: #e2e8f0;
-    -fx-sidebar-background: #1e293b;
+    -fx-background-secondary: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    -fx-background-tertiary: #e8eef5;
+    -fx-sidebar-background: linear-gradient(180deg, #2c3e50 0%, #34495e 100%);
     -fx-card-background: #ffffff;
     
     /* Text Colors */
-    -fx-text-primary: #1e293b;
-    -fx-text-secondary: #64748b;
-    -fx-text-light: #94a3b8;
+    -fx-text-primary: #2c3e50;
+    -fx-text-secondary: #7f8c8d;
+    -fx-text-light: #95a5a6;
     -fx-text-white: #ffffff;
     
     /* Border Colors */
-    -fx-border-color: #e2e8f0;
-    -fx-border-focus: #2563eb;
+    -fx-border-color: #e0e6ed;
+    -fx-border-focus: #667eea;
     
-    /* Shadow */
-    -fx-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    -fx-shadow-large: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* Shadows - More Prominent */
+    -fx-shadow: 0 2px 8px rgba(102, 126, 234, 0.15);
+    -fx-shadow-large: 0 8px 16px rgba(102, 126, 234, 0.2);
+    -fx-shadow-colored: 0 4px 15px rgba(102, 126, 234, 0.3);
 }
 
 /* Base Styling */
 .root {
-    -fx-background-color: -fx-background-secondary;
+    -fx-background-color: #f0f4f8;
 }
 
-/* Sidebar Styling */
+/* Sidebar Styling - Gradient Background */
 .sidebar {
-    -fx-background-color: -fx-sidebar-background;
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 4, 0, 2, 0);
+    -fx-background-color: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
+    -fx-effect: dropshadow(gaussian, rgba(102, 126, 234, 0.4), 10, 0, 4, 0);
 }
 
 .sidebar-title {
@@ -54,26 +60,34 @@
 
 .sidebar-button {
     -fx-background-color: transparent;
-    -fx-text-fill: #cbd5e1;
+    -fx-text-fill: rgba(255, 255, 255, 0.85);
     -fx-font-size: 14px;
     -fx-padding: 12 16;
-    -fx-background-radius: 8;
+    -fx-background-radius: 12;
     -fx-cursor: hand;
     -fx-alignment: center-left;
+    -fx-font-weight: 600;
 }
 
 .sidebar-button:hover {
-    -fx-background-color: rgba(255, 255, 255, 0.1);
+    -fx-background-color: rgba(255, 255, 255, 0.2);
     -fx-text-fill: -fx-text-white;
+    -fx-effect: dropshadow(gaussian, rgba(255, 255, 255, 0.3), 8, 0, 0, 0);
+    -fx-scale-x: 1.02;
+    -fx-scale-y: 1.02;
 }
 
 .sidebar-button-active {
-    -fx-background-color: -fx-primary-color;
+    -fx-background-color: rgba(255, 255, 255, 0.25);
     -fx-text-fill: -fx-text-white;
+    -fx-effect: dropshadow(gaussian, rgba(255, 255, 255, 0.4), 10, 0, 0, 2);
+    -fx-border-color: rgba(255, 255, 255, 0.4);
+    -fx-border-width: 0 0 0 4;
+    -fx-border-radius: 12;
 }
 
 .sidebar-button-active:hover {
-    -fx-background-color: -fx-primary-dark;
+    -fx-background-color: rgba(255, 255, 255, 0.3);
 }
 
 /* Main Content Area */
@@ -127,12 +141,16 @@
 }
 
 .primary-button {
-    -fx-background-color: -fx-primary-color;
+    -fx-background-color: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     -fx-text-fill: -fx-text-white;
+    -fx-effect: dropshadow(gaussian, rgba(102, 126, 234, 0.4), 8, 0, 0, 4);
 }
 
 .primary-button:hover {
-    -fx-background-color: -fx-primary-dark;
+    -fx-background-color: linear-gradient(135deg, #5568d3 0%, #653a8a 100%);
+    -fx-effect: dropshadow(gaussian, rgba(102, 126, 234, 0.6), 12, 0, 0, 6);
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
 }
 
 .secondary-button {
@@ -148,21 +166,29 @@
 }
 
 .success-button {
-    -fx-background-color: -fx-success-color;
+    -fx-background-color: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
     -fx-text-fill: -fx-text-white;
+    -fx-effect: dropshadow(gaussian, rgba(56, 239, 125, 0.4), 8, 0, 0, 4);
 }
 
 .success-button:hover {
-    -fx-background-color: derive(-fx-success-color, -10%);
+    -fx-background-color: linear-gradient(135deg, #0e8070 0%, #2dd164 100%);
+    -fx-effect: dropshadow(gaussian, rgba(56, 239, 125, 0.6), 12, 0, 0, 6);
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
 }
 
 .warning-button {
-    -fx-background-color: -fx-warning-color;
+    -fx-background-color: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
     -fx-text-fill: -fx-text-white;
+    -fx-effect: dropshadow(gaussian, rgba(245, 87, 108, 0.4), 8, 0, 0, 4);
 }
 
 .warning-button:hover {
-    -fx-background-color: derive(-fx-warning-color, -10%);
+    -fx-background-color: linear-gradient(135deg, #e07fe8 0%, #e04459 100%);
+    -fx-effect: dropshadow(gaussian, rgba(245, 87, 108, 0.6), 12, 0, 0, 6);
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
 }
 
 .cancel-button {
@@ -178,12 +204,16 @@
 }
 
 .delete-button {
-    -fx-background-color: -fx-error-color;
+    -fx-background-color: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
     -fx-text-fill: -fx-text-white;
+    -fx-effect: dropshadow(gaussian, rgba(255, 107, 107, 0.4), 8, 0, 0, 4);
 }
 
 .delete-button:hover {
-    -fx-background-color: derive(-fx-error-color, -10%);
+    -fx-background-color: linear-gradient(135deg, #ff5252 0%, #d94d5c 100%);
+    -fx-effect: dropshadow(gaussian, rgba(255, 107, 107, 0.6), 12, 0, 0, 6);
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
 }
 
 .action-button {
@@ -226,28 +256,38 @@
     -fx-font-style: italic;
 }
 
-/* Filter Bar */
+/* Filter Bar - Colorful */
 .filter-bar {
-    -fx-background-color: -fx-card-background;
-    -fx-background-radius: 8;
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.05), 2, 0, 0, 1);
+    -fx-background-color: linear-gradient(135deg, #ffffff 0%, #f8f9ff 100%);
+    -fx-background-radius: 12;
+    -fx-effect: dropshadow(gaussian, rgba(102, 126, 234, 0.15), 8, 0, 0, 3);
+    -fx-border-color: rgba(102, 126, 234, 0.1);
+    -fx-border-width: 1;
+    -fx-border-radius: 12;
 }
 
-/* Statistics Cards */
+/* Statistics Cards - Colorful with Gradients */
 .stats-card {
-    -fx-background-color: -fx-card-background;
-    -fx-background-radius: 12;
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 4, 0, 0, 2);
+    -fx-background-color: linear-gradient(135deg, #ffffff 0%, #f8f9ff 100%);
+    -fx-background-radius: 16;
+    -fx-effect: dropshadow(gaussian, rgba(102, 126, 234, 0.2), 10, 0, 0, 4);
     -fx-cursor: hand;
+    -fx-border-color: rgba(102, 126, 234, 0.1);
+    -fx-border-width: 1;
+    -fx-border-radius: 16;
 }
 
 .stats-card:hover {
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.15), 6, 0, 0, 3);
+    -fx-effect: dropshadow(gaussian, rgba(102, 126, 234, 0.4), 15, 0, 0, 8);
+    -fx-scale-x: 1.03;
+    -fx-scale-y: 1.03;
+    -fx-background-color: linear-gradient(135deg, #ffffff 0%, #f0f4ff 100%);
 }
 
 .stats-number {
-    -fx-text-fill: -fx-text-primary;
+    -fx-text-fill: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     -fx-font-weight: bold;
+    -fx-effect: dropshadow(gaussian, rgba(102, 126, 234, 0.2), 2, 0, 0, 1);
 }
 
 .stats-label {
@@ -260,28 +300,49 @@
 }
 
 .warning-card {
-    -fx-border-color: -fx-warning-color;
-    -fx-border-width: 2;
-    -fx-border-radius: 12;
+    -fx-background-color: linear-gradient(135deg, #fff5f5 0%, #ffe8e8 100%);
+    -fx-border-color: #ff9800;
+    -fx-border-width: 3;
+    -fx-border-radius: 16;
+    -fx-effect: dropshadow(gaussian, rgba(255, 152, 0, 0.3), 12, 0, 0, 4);
+}
+
+.warning-card:hover {
+    -fx-effect: dropshadow(gaussian, rgba(255, 152, 0, 0.5), 16, 0, 0, 8);
 }
 
 .success-card {
-    -fx-border-color: -fx-success-color;
-    -fx-border-width: 2;
-    -fx-border-radius: 12;
+    -fx-background-color: linear-gradient(135deg, #f0fff4 0%, #e6ffed 100%);
+    -fx-border-color: #00d4aa;
+    -fx-border-width: 3;
+    -fx-border-radius: 16;
+    -fx-effect: dropshadow(gaussian, rgba(0, 212, 170, 0.3), 12, 0, 0, 4);
+}
+
+.success-card:hover {
+    -fx-effect: dropshadow(gaussian, rgba(0, 212, 170, 0.5), 16, 0, 0, 8);
 }
 
 .info-card {
-    -fx-border-color: -fx-info-color;
-    -fx-border-width: 2;
-    -fx-border-radius: 12;
+    -fx-background-color: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+    -fx-border-color: #17a2b8;
+    -fx-border-width: 3;
+    -fx-border-radius: 16;
+    -fx-effect: dropshadow(gaussian, rgba(23, 162, 184, 0.3), 12, 0, 0, 4);
 }
 
-/* Charts */
+.info-card:hover {
+    -fx-effect: dropshadow(gaussian, rgba(23, 162, 184, 0.5), 16, 0, 0, 8);
+}
+
+/* Charts - Colorful Containers */
 .chart-container {
-    -fx-background-color: -fx-card-background;
-    -fx-background-radius: 12;
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 4, 0, 0, 2);
+    -fx-background-color: linear-gradient(135deg, #ffffff 0%, #fafbff 100%);
+    -fx-background-radius: 16;
+    -fx-effect: dropshadow(gaussian, rgba(102, 126, 234, 0.15), 10, 0, 0, 4);
+    -fx-border-color: rgba(102, 126, 234, 0.1);
+    -fx-border-width: 1;
+    -fx-border-radius: 16;
 }
 
 .chart-title {
@@ -301,11 +362,14 @@
     -fx-background-color: transparent;
 }
 
-/* Table Styling */
+/* Table Styling - Modern & Colorful */
 .products-table {
-    -fx-background-color: -fx-card-background;
-    -fx-background-radius: 8;
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.05), 2, 0, 0, 1);
+    -fx-background-color: linear-gradient(135deg, #ffffff 0%, #fafbff 100%);
+    -fx-background-radius: 16;
+    -fx-effect: dropshadow(gaussian, rgba(102, 126, 234, 0.15), 10, 0, 0, 4);
+    -fx-border-color: rgba(102, 126, 234, 0.1);
+    -fx-border-width: 1;
+    -fx-border-radius: 16;
 }
 
 .table-view {
@@ -314,14 +378,14 @@
 }
 
 .table-view .column-header {
-    -fx-background-color: -fx-background-tertiary;
-    -fx-text-fill: -fx-text-primary;
+    -fx-background-color: linear-gradient(135deg, #f0f4ff 0%, #e8eeff 100%);
+    -fx-text-fill: #667eea;
     -fx-font-weight: bold;
-    -fx-border-color: -fx-border-color;
+    -fx-border-color: rgba(102, 126, 234, 0.2);
 }
 
 .table-view .column-header:hover {
-    -fx-background-color: derive(-fx-background-tertiary, -5%);
+    -fx-background-color: linear-gradient(135deg, #e8eeff 0%, #dde5ff 100%);
 }
 
 .table-row-cell {
@@ -334,12 +398,14 @@
 }
 
 .table-row-cell:selected {
-    -fx-background-color: derive(-fx-primary-color, 80%);
+    -fx-background-color: linear-gradient(135deg, #e8eeff 0%, #f0f4ff 100%);
     -fx-text-fill: -fx-text-primary;
+    -fx-effect: dropshadow(gaussian, rgba(102, 126, 234, 0.2), 4, 0, 0, 2);
 }
 
 .table-row-cell:hover {
-    -fx-background-color: derive(-fx-primary-color, 90%);
+    -fx-background-color: linear-gradient(135deg, #f5f7ff 0%, #fafbff 100%);
+    -fx-effect: dropshadow(gaussian, rgba(102, 126, 234, 0.1), 2, 0, 0, 1);
 }
 
 .table-cell {
@@ -348,10 +414,11 @@
     -fx-padding: 8 12;
 }
 
-/* Low Stock Warning */
+/* Low Stock Warning - Vibrant */
 .low-stock {
-    -fx-text-fill: -fx-warning-color;
+    -fx-text-fill: #ff9800;
     -fx-font-weight: bold;
+    -fx-effect: dropshadow(gaussian, rgba(255, 152, 0, 0.3), 2, 0, 0, 1);
 }
 
 .warning-text {
@@ -386,8 +453,9 @@
 }
 
 .pagination .pagination-control.selected {
-    -fx-background-color: -fx-primary-color;
+    -fx-background-color: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     -fx-text-fill: -fx-text-white;
+    -fx-effect: dropshadow(gaussian, rgba(102, 126, 234, 0.4), 6, 0, 0, 2);
 }
 
 /* Tabs */

@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<VBox xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" 
+      fx:controller="com.inventory.controller.DocumentsController" 
+      spacing="20.0" styleClass="main-content">
+   <padding>
+      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+   </padding>
+   
+   <children>
+      <!-- Page Header -->
+      <HBox alignment="CENTER_LEFT" spacing="15.0">
+         <children>
+            <Label styleClass="page-title" text="📄 Documents">
+               <font>
+                  <Font name="System Bold" size="28.0" />
+               </font>
+            </Label>
+            <Region HBox.hgrow="ALWAYS" />
+            <ProgressIndicator fx:id="loadingIndicator" prefHeight="30.0" prefWidth="30.0" visible="false" />
+         </children>
+      </HBox>
+      
+      <Label styleClass="welcome-text" text="Generate and download PDF reports for your inventory">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      
+      <Separator />
+      
+      <!-- Document Cards Container -->
+      <GridPane hgap="20.0" vgap="20.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="300.0" prefWidth="400.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="300.0" prefWidth="400.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="250.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         
+         <!-- Full Product List Card -->
+         <VBox alignment="TOP_CENTER" spacing="15.0" styleClass="stats-card" GridPane.columnIndex="0">
+            <padding>
+               <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+            </padding>
+            <children>
+               <!-- Icon -->
+               <Label styleClass="stats-number" text="📋">
+                  <font>
+                     <Font size="48.0" />
+                  </font>
+               </Label>
+               
+               <!-- Title -->
+               <Label styleClass="section-title" text="Complete Product List">
+                  <font>
+                     <Font name="System Bold" size="18.0" />
+                  </font>
+               </Label>
+               
+               <!-- Description -->
+               <Label alignment="CENTER" styleClass="stats-label" text="Download a comprehensive PDF report containing all products in your inventory with detailed information." wrapText="true">
+                  <font>
+                     <Font size="13.0" />
+                  </font>
+               </Label>
+               
+               <!-- Info Labels -->
+               <HBox alignment="CENTER" spacing="20.0">
+                  <VBox.margin>
+                     <Insets top="10.0" />
+                  </VBox.margin>
+                  <children>
+                     <VBox alignment="CENTER" spacing="5.0">
+                        <children>
+                           <Label fx:id="totalProductsLabel" styleClass="stats-number" text="0">
+                              <font>
+                                 <Font name="System Bold" size="24.0" />
+                              </font>
+                           </Label>
+                           <Label styleClass="stats-sublabel" text="Total Products" />
+                        </children>
+                     </VBox>
+                     <Separator orientation="VERTICAL" />
+                     <VBox alignment="CENTER" spacing="5.0">
+                        <children>
+                           <Label fx:id="totalCategoriesLabel" styleClass="stats-number" text="0">
+                              <font>
+                                 <Font name="System Bold" size="24.0" />
+                              </font>
+                           </Label>
+                           <Label styleClass="stats-sublabel" text="Categories" />
+                        </children>
+                     </VBox>
+                  </children>
+               </HBox>
+               
+               <!-- Download Button -->
+               <Button fx:id="downloadFullListButton" mnemonicParsing="false" onAction="#downloadFullProductList" prefWidth="200.0" styleClass="primary-button" text="📥 Download PDF">
+                  <VBox.margin>
+                     <Insets top="10.0" />
+                  </VBox.margin>
+                  <font>
+                     <Font name="System Bold" size="14.0" />
+                  </font>
+               </Button>
+            </children>
+         </VBox>
+         
+         <!-- Low Stock Report Card -->
+         <VBox alignment="TOP_CENTER" spacing="15.0" styleClass="stats-card, warning-card" GridPane.columnIndex="1">
+            <padding>
+               <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+            </padding>
+            <children>
+               <!-- Icon -->
+               <Label styleClass="warning-text" text="⚠️">
+                  <font>
+                     <Font size="48.0" />
+                  </font>
+               </Label>
+               
+               <!-- Title -->
+               <Label styleClass="section-title" text="Low Stock Alert Report">
+                  <font>
+                     <Font name="System Bold" size="18.0" />
+                  </font>
+               </Label>
+               
+               <!-- Description -->
+               <Label alignment="CENTER" styleClass="stats-label" text="Download a PDF report highlighting products with low inventory levels that require immediate attention." wrapText="true">
+                  <font>
+                     <Font size="13.0" />
+                  </font>
+               </Label>
+               
+               <!-- Info Labels -->
+               <HBox alignment="CENTER" spacing="20.0">
+                  <VBox.margin>
+                     <Insets top="10.0" />
+                  </VBox.margin>
+                  <children>
+                     <VBox alignment="CENTER" spacing="5.0">
+                        <children>
+                           <Label fx:id="lowStockCountLabel" styleClass="warning-text" text="0">
+                              <font>
+                                 <Font name="System Bold" size="24.0" />
+                              </font>
+                           </Label>
+                           <Label styleClass="stats-sublabel" text="Low Stock Items" />
+                        </children>
+                     </VBox>
+                     <Separator orientation="VERTICAL" />
+                     <VBox alignment="CENTER" spacing="5.0">
+                        <children>
+                           <Label fx:id="criticalStockLabel" styleClass="error-text" text="0">
+                              <font>
+                                 <Font name="System Bold" size="24.0" />
+                              </font>
+                           </Label>
+                           <Label styleClass="stats-sublabel" text="Critical (&lt; 5)" />
+                        </children>
+                     </VBox>
+                  </children>
+               </HBox>
+               
+               <!-- Download Button -->
+               <Button fx:id="downloadLowStockButton" mnemonicParsing="false" onAction="#downloadLowStockReport" prefWidth="200.0" styleClass="warning-button" text="📥 Download PDF">
+                  <VBox.margin>
+                     <Insets top="10.0" />
+                  </VBox.margin>
+                  <font>
+                     <Font name="System Bold" size="14.0" />
+                  </font>
+               </Button>
+            </children>
+         </VBox>
+      </GridPane>
+      
+      <!-- Information Section -->
+      <VBox spacing="10.0" styleClass="filter-bar">
+         <padding>
+            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+         </padding>
+         <children>
+            <Label styleClass="section-title" text="ℹ️ About PDF Reports">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label styleClass="stats-label" text="• PDF reports are generated in real-time with the latest inventory data" wrapText="true" />
+            <Label styleClass="stats-label" text="• Full Product List includes all products with complete details and statistics" wrapText="true" />
+            <Label styleClass="stats-label" text="• Low Stock Report highlights items with quantity below 10 units" wrapText="true" />
+            <Label styleClass="stats-label" text="• Reports include timestamps and can be saved for record-keeping" wrapText="true" />
+            <Label styleClass="stats-label" text="• All reports feature professional formatting with color-coded information" wrapText="true" />
+         </children>
+      </VBox>
+      
+      <!-- Status Label -->
+      <Label fx:id="statusLabel" styleClass="stats-sublabel" text="" wrapText="true">
+         <font>
+            <Font size="12.0" />
+         </font>
+      </Label>
+   </children>
+</VBox>

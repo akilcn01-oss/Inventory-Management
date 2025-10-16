@@ -360,6 +360,53 @@ public class ApiService {
     }
     
     /**
+     * Download PDF from specified endpoint
+     * @param endpoint API endpoint path
+     * @return PDF file as byte array
+     */
+    public byte[] downloadPDF(String endpoint) {
+        try {
+            HttpGet request = new HttpGet(baseUrl + endpoint);
+            
+            try (CloseableHttpResponse response = httpClient.execute(request)) {
+                int statusCode = response.getCode();
+                
+                if (statusCode == 200) {
+                    try {
+                        byte[] pdfBytes = EntityUtils.toByteArray(response.getEntity());
+                        logger.debug("Downloaded PDF from {}, size: {} bytes", endpoint, pdfBytes.length);
+                        return pdfBytes;
+                    } catch (Exception e) {
+                        logger.error("Error reading PDF bytes", e);
+                        throw new RuntimeException("Failed to read PDF data: " + e.getMessage(), e);
+                    }
+                } else {
+                    try {
+                        String errorBody = EntityUtils.toString(response.getEntity());
+                        logger.error("Failed to download PDF: {} - {}", statusCode, errorBody);
+                        throw new RuntimeException("Failed to download PDF: HTTP " + statusCode);
+                    } catch (Exception e) {
+                        throw new RuntimeException("Failed to download PDF: HTTP " + statusCode);
+                    }
+                }
+            }
+            
+        } catch (IOException e) {
+            logger.error("Error downloading PDF from " + endpoint, e);
+            throw new RuntimeException("Failed to download PDF: " + e.getMessage(), e);
+        }
+    }
+    
+    /**
+     * Download PDF asynchronously
+     * @param endpoint API endpoint path
+     * @return CompletableFuture with PDF bytes
+     */
+    public CompletableFuture<byte[]> downloadPDFAsync(String endpoint) {
+        return CompletableFuture.supplyAsync(() -> downloadPDF(endpoint), executorService);
+    }
+    
+    /**
      * Shutdown the service and cleanup resources
      */
     public void shutdown() {
