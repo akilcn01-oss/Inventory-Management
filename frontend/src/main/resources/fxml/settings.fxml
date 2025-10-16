@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<VBox spacing="20.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.inventory.controller.SettingsController">
+   <children>
+      <!-- Header -->
+      <HBox alignment="CENTER_LEFT">
+         <children>
+            <Label styleClass="form-title" text="Settings">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <Region HBox.hgrow="ALWAYS" />
+            <ProgressIndicator fx:id="loadingIndicator" prefHeight="24.0" prefWidth="24.0" visible="false" />
+         </children>
+      </HBox>
+      
+      <!-- Settings Tabs -->
+      <TabPane fx:id="settingsTabPane" tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
+         <tabs>
+            <!-- API Settings Tab -->
+            <Tab text="API Settings">
+               <content>
+                  <VBox spacing="20.0">
+                     <children>
+                        <Label styleClass="section-title" text="API Configuration">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        
+                        <GridPane hgap="15.0" vgap="15.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="NEVER" minWidth="120.0" prefWidth="150.0" />
+                              <ColumnConstraints hgrow="ALWAYS" minWidth="200.0" prefWidth="300.0" />
+                              <ColumnConstraints hgrow="NEVER" minWidth="100.0" prefWidth="120.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Label styleClass="form-label" text="Base URL:" GridPane.halignment="RIGHT">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="apiBaseUrlField" promptText="http://localhost:8000" styleClass="form-field" GridPane.columnIndex="1" />
+                              <Button fx:id="testConnectionButton" mnemonicParsing="false" onAction="#testApiConnection" styleClass="secondary-button" text="Test" GridPane.columnIndex="2" />
+                              
+                              <Label styleClass="form-label" text="Timeout (ms):" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Spinner fx:id="apiTimeoutSpinner" prefWidth="150.0" styleClass="form-field" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              
+                              <Label styleClass="form-label" text="Status:" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="connectionStatusLabel" styleClass="status-text" text="Not tested" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                           </children>
+                        </GridPane>
+                     </children>
+                     <padding>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                     </padding>
+                  </VBox>
+               </content>
+            </Tab>
+            
+            <!-- UI Settings Tab -->
+            <Tab text="UI Settings">
+               <content>
+                  <VBox spacing="20.0">
+                     <children>
+                        <Label styleClass="section-title" text="User Interface">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        
+                        <GridPane hgap="15.0" vgap="15.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="NEVER" minWidth="120.0" prefWidth="150.0" />
+                              <ColumnConstraints hgrow="ALWAYS" minWidth="200.0" prefWidth="300.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Label styleClass="form-label" text="Theme:" GridPane.halignment="RIGHT">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <ComboBox fx:id="themeComboBox" prefWidth="200.0" styleClass="form-field" GridPane.columnIndex="1" />
+                              
+                              <Label styleClass="form-label" text="Items per page:" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Spinner fx:id="itemsPerPageSpinner" prefWidth="150.0" styleClass="form-field" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              
+                              <Label styleClass="form-label" text="Enable animations:" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <CheckBox fx:id="enableAnimationsCheckBox" mnemonicParsing="false" text="Enable UI animations" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              
+                              <Label styleClass="form-label" text="Show tooltips:" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <CheckBox fx:id="showTooltipsCheckBox" mnemonicParsing="false" text="Show helpful tooltips" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                           </children>
+                        </GridPane>
+                     </children>
+                     <padding>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                     </padding>
+                  </VBox>
+               </content>
+            </Tab>
+            
+            <!-- Inventory Settings Tab -->
+            <Tab text="Inventory">
+               <content>
+                  <VBox spacing="20.0">
+                     <children>
+                        <Label styleClass="section-title" text="Inventory Management">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        
+                        <GridPane hgap="15.0" vgap="15.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="NEVER" minWidth="120.0" prefWidth="150.0" />
+                              <ColumnConstraints hgrow="ALWAYS" minWidth="200.0" prefWidth="300.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Label styleClass="form-label" text="Low stock threshold:" GridPane.halignment="RIGHT">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Spinner fx:id="lowStockThresholdSpinner" prefWidth="150.0" styleClass="form-field" GridPane.columnIndex="1" />
+                              
+                              <Label styleClass="form-label" text="Low stock alerts:" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <CheckBox fx:id="enableLowStockAlertsCheckBox" mnemonicParsing="false" text="Enable low stock notifications" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              
+                              <Label styleClass="form-label" text="Auto refresh:" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <CheckBox fx:id="autoRefreshCheckBox" mnemonicParsing="false" text="Automatically refresh data" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              
+                              <Label styleClass="form-label" text="Refresh interval (s):" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Spinner fx:id="refreshIntervalSpinner" prefWidth="150.0" styleClass="form-field" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                           </children>
+                        </GridPane>
+                     </children>
+                     <padding>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                     </padding>
+                  </VBox>
+               </content>
+            </Tab>
+            
+            <!-- About Tab -->
+            <Tab text="About">
+               <content>
+                  <VBox alignment="CENTER" spacing="20.0">
+                     <children>
+                        <Label styleClass="app-title" text="Inventory Management System">
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label styleClass="app-version" text="Version 1.0.0">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <Separator prefWidth="300.0" />
+                        <Label styleClass="app-description" text="A comprehensive inventory management system built with JavaFX and Python FastAPI." textAlignment="CENTER" wrapText="true">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <VBox alignment="CENTER" spacing="10.0">
+                           <children>
+                              <Label styleClass="feature-title" text="Features:">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label text="• Product management with CRUD operations" />
+                              <Label text="• Dashboard with statistics and charts" />
+                              <Label text="• Search and filtering capabilities" />
+                              <Label text="• Low stock alerts" />
+                              <Label text="• Modern, responsive UI" />
+                           </children>
+                        </VBox>
+                        <Separator prefWidth="300.0" />
+                        <Label styleClass="copyright" text="© 2024 Inventory Management System">
+                           <font>
+                              <Font size="12.0" />
+                           </font>
+                        </Label>
+                        <Button mnemonicParsing="false" onAction="#showAbout" styleClass="secondary-button" text="More Information" />
+                     </children>
+                     <padding>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                     </padding>
+                  </VBox>
+               </content>
+            </Tab>
+         </tabs>
+      </TabPane>
+      
+      <!-- Buttons -->
+      <HBox alignment="CENTER_RIGHT" spacing="15.0">
+         <children>
+            <Button fx:id="resetButton" mnemonicParsing="false" onAction="#resetToDefaults" styleClass="warning-button" text="Reset to Defaults" />
+            <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#closeDialog" styleClass="cancel-button" text="Cancel" />
+            <Button fx:id="saveButton" mnemonicParsing="false" onAction="#saveSettings" styleClass="success-button" text="Save Settings" />
+         </children>
+      </HBox>
+   </children>
+   <padding>
+      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+   </padding>
+</VBox>

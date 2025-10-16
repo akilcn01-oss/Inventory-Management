@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.inventory.controller.MainController">
+   <left>
+      <VBox fx:id="sidebarVBox" prefWidth="200.0" styleClass="sidebar">
+         <children>
+            <Label styleClass="sidebar-title" text="Inventory Manager">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="20.0" left="15.0" right="15.0" top="15.0" />
+               </VBox.margin>
+            </Label>
+            <Button fx:id="dashboardButton" mnemonicParsing="false" prefWidth="170.0" styleClass="sidebar-button" text="📊 Dashboard">
+               <VBox.margin>
+                  <Insets bottom="5.0" left="15.0" right="15.0" />
+               </VBox.margin>
+            </Button>
+            <Button fx:id="productsButton" mnemonicParsing="false" prefWidth="170.0" styleClass="sidebar-button" text="📦 Products">
+               <VBox.margin>
+                  <Insets bottom="5.0" left="15.0" right="15.0" />
+               </VBox.margin>
+            </Button>
+            <Button fx:id="addProductButton" mnemonicParsing="false" prefWidth="170.0" styleClass="sidebar-button" text="➕ Add Product">
+               <VBox.margin>
+                  <Insets bottom="5.0" left="15.0" right="15.0" />
+               </VBox.margin>
+            </Button>
+            <Separator>
+               <VBox.margin>
+                  <Insets bottom="10.0" left="15.0" right="15.0" top="10.0" />
+               </VBox.margin>
+            </Separator>
+            <Button fx:id="settingsButton" mnemonicParsing="false" prefWidth="170.0" styleClass="sidebar-button" text="⚙️ Settings">
+               <VBox.margin>
+                  <Insets bottom="5.0" left="15.0" right="15.0" />
+               </VBox.margin>
+            </Button>
+         </children>
+      </VBox>
+   </left>
+   <center>
+      <BorderPane fx:id="mainBorderPane" styleClass="main-content">
+         <center>
+            <Label styleClass="welcome-text" text="Welcome to Inventory Management System">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+         </center>
+      </BorderPane>
+   </center>
+   <bottom>
+      <HBox alignment="CENTER_LEFT" prefHeight="30.0" styleClass="status-bar">
+         <children>
+            <Label fx:id="statusLabel" text="Ready">
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+            </Label>
+            <Region HBox.hgrow="ALWAYS" />
+            <ProgressIndicator fx:id="loadingIndicator" prefHeight="20.0" prefWidth="20.0" visible="false">
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
+            </ProgressIndicator>
+         </children>
+      </HBox>
+   </bottom>
+</BorderPane>

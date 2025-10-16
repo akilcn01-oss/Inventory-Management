@@ -1,0 +1,229 @@
+/* Simplified Inventory Management System Styles - No CSS Variables */
+
+/* Base Styling */
+.root {
+    -fx-font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    -fx-font-size: 14px;
+    -fx-background-color: #f8fafc;
+}
+
+/* Sidebar Styling */
+.sidebar {
+    -fx-background-color: #1e293b;
+}
+
+.sidebar-title {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.sidebar-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #cbd5e1;
+    -fx-font-size: 14px;
+    -fx-padding: 12 16;
+    -fx-background-radius: 8;
+    -fx-cursor: hand;
+    -fx-alignment: center-left;
+}
+
+.sidebar-button:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.1);
+    -fx-text-fill: white;
+}
+
+.sidebar-button-active {
+    -fx-background-color: #2563eb;
+    -fx-text-fill: white;
+}
+
+/* Main Content Area */
+.main-content {
+    -fx-background-color: #f8fafc;
+    -fx-padding: 0;
+}
+
+/* Status Bar */
+.status-bar {
+    -fx-background-color: white;
+    -fx-border-color: #e2e8f0;
+    -fx-border-width: 1 0 0 0;
+    -fx-padding: 5 10;
+}
+
+/* Typography */
+.page-title {
+    -fx-text-fill: #1e293b;
+    -fx-font-weight: bold;
+}
+
+.welcome-text {
+    -fx-text-fill: #64748b;
+    -fx-font-style: italic;
+}
+
+/* Buttons */
+.button {
+    -fx-font-size: 14px;
+    -fx-padding: 8 16;
+    -fx-background-radius: 6;
+    -fx-cursor: hand;
+    -fx-font-weight: bold;
+}
+
+.primary-button {
+    -fx-background-color: #2563eb;
+    -fx-text-fill: white;
+}
+
+.primary-button:hover {
+    -fx-background-color: #1d4ed8;
+}
+
+.secondary-button {
+    -fx-background-color: white;
+    -fx-text-fill: #1e293b;
+    -fx-border-color: #e2e8f0;
+    -fx-border-width: 1;
+    -fx-border-radius: 6;
+}
+
+.success-button {
+    -fx-background-color: #059669;
+    -fx-text-fill: white;
+}
+
+.warning-button {
+    -fx-background-color: #d97706;
+    -fx-text-fill: white;
+}
+
+.cancel-button {
+    -fx-background-color: white;
+    -fx-text-fill: #64748b;
+    -fx-border-color: #e2e8f0;
+    -fx-border-width: 1;
+    -fx-border-radius: 6;
+}
+
+.delete-button {
+    -fx-background-color: #dc2626;
+    -fx-text-fill: white;
+}
+
+/* Form Controls */
+.form-label {
+    -fx-text-fill: #1e293b;
+    -fx-font-weight: bold;
+}
+
+.form-field {
+    -fx-background-color: white;
+    -fx-border-color: #e2e8f0;
+    -fx-border-width: 1;
+    -fx-border-radius: 4;
+    -fx-background-radius: 4;
+    -fx-padding: 8 12;
+}
+
+.form-field:focused {
+    -fx-border-color: #2563eb;
+    -fx-border-width: 2;
+}
+
+.error-field {
+    -fx-border-color: #dc2626;
+    -fx-border-width: 2;
+}
+
+/* Statistics Cards */
+.stats-card {
+    -fx-background-color: white;
+    -fx-background-radius: 12;
+    -fx-cursor: hand;
+}
+
+.stats-number {
+    -fx-text-fill: #1e293b;
+    -fx-font-weight: bold;
+}
+
+.stats-label {
+    -fx-text-fill: #64748b;
+}
+
+.warning-card {
+    -fx-border-color: #d97706;
+    -fx-border-width: 2;
+    -fx-border-radius: 12;
+}
+
+.success-card {
+    -fx-border-color: #059669;
+    -fx-border-width: 2;
+    -fx-border-radius: 12;
+}
+
+.info-card {
+    -fx-border-color: #0891b2;
+    -fx-border-width: 2;
+    -fx-border-radius: 12;
+}
+
+/* Charts */
+.chart-container {
+    -fx-background-color: white;
+    -fx-background-radius: 12;
+}
+
+.chart-title {
+    -fx-text-fill: #1e293b;
+    -fx-font-weight: bold;
+}
+
+/* Table Styling */
+.products-table {
+    -fx-background-color: white;
+    -fx-background-radius: 8;
+}
+
+.table-view {
+    -fx-background-color: transparent;
+}
+
+.table-row-cell {
+    -fx-background-color: white;
+}
+
+.table-row-cell:odd {
+    -fx-background-color: #f8fafc;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #dbeafe;
+}
+
+.table-cell {
+    -fx-text-fill: #1e293b;
+}
+
+/* Low Stock Warning */
+.low-stock {
+    -fx-text-fill: #d97706;
+    -fx-font-weight: bold;
+}
+
+.warning-text {
+    -fx-text-fill: #d97706;
+    -fx-font-weight: bold;
+}
+
+.success-text {
+    -fx-text-fill: #059669;
+    -fx-font-weight: bold;
+}
+
+.error-text {
+    -fx-text-fill: #dc2626;
+    -fx-font-weight: bold;
+}

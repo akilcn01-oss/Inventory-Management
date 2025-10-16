@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<VBox spacing="20.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.inventory.controller.ProductFormController">
+   <children>
+      <!-- Header -->
+      <HBox alignment="CENTER_LEFT">
+         <children>
+            <Label fx:id="titleLabel" styleClass="form-title" text="Add Product">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <Region HBox.hgrow="ALWAYS" />
+            <ProgressIndicator fx:id="loadingIndicator" prefHeight="24.0" prefWidth="24.0" visible="false" />
+         </children>
+      </HBox>
+      
+      <!-- Form Fields -->
+      <GridPane hgap="15.0" vgap="15.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="NEVER" minWidth="100.0" prefWidth="120.0" />
+            <ColumnConstraints hgrow="ALWAYS" minWidth="200.0" prefWidth="300.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <!-- Product Name -->
+            <Label styleClass="form-label" text="Name *:" GridPane.halignment="RIGHT">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="nameField" prefWidth="300.0" promptText="Enter product name" styleClass="form-field" GridPane.columnIndex="1" />
+            
+            <!-- Category -->
+            <Label styleClass="form-label" text="Category *:" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <ComboBox fx:id="categoryComboBox" prefWidth="300.0" promptText="Select or enter category" styleClass="form-field" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            
+            <!-- Quantity and Price -->
+            <Label styleClass="form-label" text="Quantity *:" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <HBox spacing="15.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <children>
+                  <Spinner fx:id="quantitySpinner" prefWidth="120.0" styleClass="form-field" />
+                  <Label styleClass="form-label" text="Price *:">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="priceField" prefWidth="120.0" promptText="0.00" styleClass="form-field" />
+               </children>
+            </HBox>
+            
+            <!-- Description -->
+            <Label styleClass="form-label" text="Description:" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="TOP">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets top="5.0" />
+               </GridPane.margin>
+            </Label>
+            <TextArea fx:id="descriptionArea" prefHeight="80.0" prefWidth="300.0" promptText="Enter product description (optional)" styleClass="form-field" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="3" GridPane.rowSpan="2" />
+         </children>
+      </GridPane>
+      
+      <!-- Validation Messages -->
+      <Label styleClass="validation-info" text="* Required fields" textFill="#666666">
+         <font>
+            <Font size="12.0" />
+         </font>
+      </Label>
+      
+      <!-- Buttons -->
+      <HBox alignment="CENTER_RIGHT" spacing="15.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#resetForm" styleClass="secondary-button" text="Reset" />
+            <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#closeForm" styleClass="cancel-button" text="Cancel" />
+            <Button fx:id="saveButton" mnemonicParsing="false" onAction="#saveProduct" styleClass="success-button" text="Save Product" />
+         </children>
+      </HBox>
+   </children>
+   <padding>
+      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+   </padding>
+</VBox>

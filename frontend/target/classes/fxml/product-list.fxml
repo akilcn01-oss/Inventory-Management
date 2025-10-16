@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<VBox fx:id="productListRoot" spacing="20.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.inventory.controller.ProductListController">
+   <children>
+      <!-- Header -->
+      <HBox alignment="CENTER_LEFT" spacing="20.0">
+         <children>
+            <Label styleClass="page-title" text="Products">
+               <font>
+                  <Font name="System Bold" size="28.0" />
+               </font>
+            </Label>
+            <Region HBox.hgrow="ALWAYS" />
+            <Button fx:id="refreshButton" mnemonicParsing="false" styleClass="primary-button" text="🔄 Refresh" />
+            <Button fx:id="addButton" mnemonicParsing="false" styleClass="success-button" text="➕ Add Product" />
+         </children>
+      </HBox>
+      
+      <!-- Filters and Search -->
+      <HBox alignment="CENTER_LEFT" spacing="15.0" styleClass="filter-bar">
+         <children>
+            <Label text="Search:">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="searchField" prefWidth="200.0" promptText="Search products..." styleClass="search-field" />
+            
+            <Separator orientation="VERTICAL" />
+            
+            <Label text="Category:">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <ComboBox fx:id="categoryFilter" prefWidth="150.0" promptText="All Categories" />
+            
+            <Separator orientation="VERTICAL" />
+            
+            <CheckBox fx:id="lowStockFilter" mnemonicParsing="false" text="Low Stock Only" />
+            
+            <Region HBox.hgrow="ALWAYS" />
+            
+            <Label fx:id="statusLabel" styleClass="status-text" text="Loading..." />
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="15.0" right="15.0" top="10.0" />
+         </padding>
+      </HBox>
+      
+      <!-- Products Table -->
+      <TableView fx:id="productTable" styleClass="products-table" VBox.vgrow="ALWAYS">
+         <columns>
+            <TableColumn fx:id="idColumn" prefWidth="60.0" text="ID" />
+            <TableColumn fx:id="nameColumn" prefWidth="200.0" text="Name" />
+            <TableColumn fx:id="categoryColumn" prefWidth="120.0" text="Category" />
+            <TableColumn fx:id="quantityColumn" prefWidth="80.0" text="Quantity" />
+            <TableColumn fx:id="priceColumn" prefWidth="100.0" text="Price" />
+            <TableColumn fx:id="descriptionColumn" prefWidth="250.0" text="Description" />
+            <TableColumn fx:id="createdAtColumn" prefWidth="140.0" text="Created" />
+            <TableColumn fx:id="actionsColumn" prefWidth="150.0" sortable="false" text="Actions" />
+         </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+      
+      <!-- Pagination -->
+      <HBox alignment="CENTER">
+         <children>
+            <Pagination fx:id="pagination" pageCount="1" />
+         </children>
+      </HBox>
+   </children>
+   <padding>
+      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+   </padding>
+</VBox>

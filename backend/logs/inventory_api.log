@@ -1,0 +1,32 @@
+2025-10-16 10:47:40,542 - inventory_api - INFO - Logging initialized with level: INFO
+2025-10-16 10:47:40,555 - inventory_api - INFO - Starting server on localhost:8000
+2025-10-16 10:47:42,414 - inventory_api - INFO - Logging initialized with level: INFO
+2025-10-16 10:47:42,549 - inventory_api - INFO - Logging initialized with level: INFO
+2025-10-16 10:47:42,567 - inventory_api - INFO - Starting Inventory Management API...
+2025-10-16 10:47:42,567 - database - INFO - Establishing database connection...
+2025-10-16 10:47:42,973 - database - ERROR - Error connecting to MySQL database: 1049 (42000): Unknown database 'inventory_db'
+2025-10-16 10:47:42,974 - inventory_api - ERROR - Failed to connect to database: Database connection failed: 1049 (42000): Unknown database 'inventory_db'
+2025-10-16 10:51:53,788 - inventory_api - INFO - Logging initialized with level: INFO
+2025-10-16 10:51:53,810 - inventory_api - INFO - Starting server on localhost:8000
+2025-10-16 10:51:54,956 - inventory_api - INFO - Logging initialized with level: INFO
+2025-10-16 10:51:55,015 - inventory_api - INFO - Logging initialized with level: INFO
+2025-10-16 10:51:55,023 - inventory_api - INFO - Starting Inventory Management API...
+2025-10-16 10:51:55,023 - database - INFO - Establishing database connection...
+2025-10-16 10:51:55,289 - database - INFO - Successfully connected to MySQL database: inventory_db
+2025-10-16 10:51:55,290 - inventory_api - INFO - Database connection established
+2025-10-16 11:02:32,821 - inventory_api - INFO - Fetching products: skip=0, limit=1000, category=None, search=None
+2025-10-16 11:02:32,834 - inventory_api - INFO - Retrieved 30 products
+2025-10-16 11:02:35,965 - inventory_api - INFO - Fetching product categories
+2025-10-16 11:02:36,004 - inventory_api - INFO - Retrieved 7 categories
+2025-10-16 11:02:52,395 - inventory_api - INFO - Fetching products: skip=0, limit=1000, category=None, search=None
+2025-10-16 11:02:52,404 - inventory_api - INFO - Retrieved 30 products
+2025-10-16 11:05:40,587 - inventory_api - INFO - Fetching dashboard statistics
+2025-10-16 11:05:40,663 - inventory_api - INFO - Dashboard statistics retrieved successfully
+2025-10-16 11:09:33,802 - inventory_api - INFO - Fetching products: skip=0, limit=1000, category=None, search=None
+2025-10-16 11:09:33,811 - inventory_api - INFO - Retrieved 30 products
+2025-10-16 11:09:35,037 - inventory_api - INFO - Fetching products: skip=0, limit=1000, category=None, search=None
+2025-10-16 11:09:35,079 - inventory_api - INFO - Retrieved 30 products
+2025-10-16 11:15:23,453 - inventory_api - INFO - Fetching products: skip=0, limit=1000, category=None, search=None
+2025-10-16 11:15:23,460 - inventory_api - INFO - Retrieved 30 products
+2025-10-16 11:16:37,073 - inventory_api - INFO - Fetching dashboard statistics
+2025-10-16 11:16:37,120 - inventory_api - INFO - Dashboard statistics retrieved successfully
